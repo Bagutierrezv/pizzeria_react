@@ -1,15 +1,17 @@
-
 import Footer from './components/Footer/Footer'
-import Home from './components/Home/Home'
+import LoginPage from './components/LoginPage/LoginPage'
+/* import Home from './components/Home/Home' */
 import Navbar from './components/Navbar/Navbar'
-
+import RegisterPage from './components/RegisterPage/RegisterPage'
 
 const App = () => {
   return (
     <>
-    <Navbar/>
-    <Home/>
-    <Footer/>
+      <Navbar />
+      {/* <Home /> */}
+      <RegisterPage />
+      {/* <LoginPage /> */}
+      <Footer />
     </>
   )
 }
