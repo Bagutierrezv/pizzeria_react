@@ -1,0 +1,39 @@
+
+.cantidadPizza{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.botones{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+.imagen{
+    width: 18rem;
+    margin: 1rem;
+}
+.nombrePizza{
+    width: 10rem;
+}
+
+.botones > .sumar-restar{
+    width: 2rem;
+}
+h3{
+    text-align: center;
+    margin: 4rem 0rem 3rem;
+}
+.pagar{
+    text-align: center;
+    margin: 3rem;
+}
+.pagar > h4{
+    margin-bottom: 1.5rem;
+}
+.precio{
+    width: 3rem;
+}
