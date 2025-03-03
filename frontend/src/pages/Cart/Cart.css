@@ -1,39 +1,39 @@
 
-.cantidadPizza{
+.cantidad-carrito{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.botones{
+.botones-carrito{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     margin: 1rem;
 }
-.imagen{
+.imagen-carrito{
     width: 18rem;
     margin: 1rem;
 }
-.nombrePizza{
+.nombre-pizza-carrito{
     width: 10rem;
 }
 
-.botones > .sumar-restar{
+.botones-carrito > .sumar-restar-carrito{
     width: 2rem;
 }
-h3{
+.titulo-carrito{
     text-align: center;
     margin: 4rem 0rem 3rem;
 }
-.pagar{
+.pagar-carrito{
     text-align: center;
     margin: 3rem;
 }
-.pagar > h4{
+.pagar-carrito > h4{
     margin-bottom: 1.5rem;
 }
-.precio{
+.precio-carrito{
     width: 3rem;
 }

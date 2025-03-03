@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button'
-import './Pizzas.css'
+import './Pizza.css'
 import formatearMontos from '../../helpers/montos'
 
-const Pizzas = () => {
+const Pizza = () => {
   const [pizza, setPizza] = useState()
   const url = 'http://localhost:5000/api/pizzas/p001'
 
@@ -24,12 +24,12 @@ const Pizzas = () => {
   return (
     pizza
       ? (
-        <main className='contenedor'>
+        <main className='contenedor-pizza'>
           <div>
-            <img src={pizza.img} />
+            <img className='img-pizza' src={pizza.img} />
           </div>
-          <div className='descripcion'>
-            <h1>Pizza {pizza.name}</h1>
+          <div className='descripcion-pizza'>
+            <h1 className='descripcion-pizza-titulo'>Pizza {pizza.name}</h1>
             <p>{pizza.desc}</p>
             <p>{pizza.ingredients.map((ingredient) => <li key={ingredient}>{ingredient}</li>)}</p>
             <div className='d-flex justify-content-around'>
@@ -46,4 +46,4 @@ const Pizzas = () => {
   )
 }
 
-export default Pizzas
+export default Pizza

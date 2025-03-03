@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Toaster, toast } from 'sonner'
-import './RegisterPage.css'
+import './Register.css'
 
-const RegisterPage = () => {
+const Register = () => {
   const [registro, setRegistro] = useState({
     email: '',
     clave: '',
@@ -38,10 +38,10 @@ const RegisterPage = () => {
 
   return (
     <main>
-      <section className='contenedor'>
+      <section className='contenedor-registro'>
         <Toaster position='top-center' expand={false} richColors />
-        <form onSubmit={handleSubmit} className='formulario'>
-          <h1 className='titulo'>Registrate</h1>
+        <form onSubmit={handleSubmit} className='formulario-registro'>
+          <h1 className='titulo-registro'>Registrate</h1>
           <div>
             <label htmlFor='email' className='form-label'>Email</label>
             <input
@@ -49,7 +49,7 @@ const RegisterPage = () => {
               name='email'
               value={registro.email}
               onChange={handleOnChange}
-              className='form-control'
+              className='form-control input-registro'
               placeholder='Ingresa tu email'
             />
           </div>
@@ -60,7 +60,7 @@ const RegisterPage = () => {
               name='clave'
               value={registro.clave}
               onChange={handleOnChange}
-              className='form-control'
+              className='form-control input-registro'
               placeholder='Ingresa tu contraseña'
             />
           </div>
@@ -71,14 +71,14 @@ const RegisterPage = () => {
               name='confirmarClave'
               value={registro.confirmarClave}
               onChange={handleOnChange}
-              className='form-control'
+              className='form-control input-registro'
               placeholder='Confirma tu contraseña'
             />
           </div>
-          <button type='submit' className='btn btn-info '>Crear cuenta</button>
+          <button type='submit' className='btn btn-info button-registro'>Crear cuenta</button>
         </form>
       </section>
     </main>
   )
 }
-export default RegisterPage
+export default Register

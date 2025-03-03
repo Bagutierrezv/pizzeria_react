@@ -1,22 +1,29 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Footer from './components/Footer/Footer'
-/* import LoginPage from './components/LoginPage/LoginPage' */
-/* import Home from './components/Home/Home' */
-import Navbar from './components/Navbar/Navbar'
-import Pizzas from './components/Pizzas/Pizzas'
-/* import RegisterPage from './components/RegisterPage/RegisterPage' */
-/* import Cart from './components/Cart/Cart' */
+import Navbar from './components/Navigation/Navigation'
+import Login from './pages/Login/Login'
+import Home from './pages/Home/Home'
+import Pizza from './pages/Pizza/Pizza'
+import Register from './pages/Register/Register'
+import Cart from './pages/Cart/Cart'
+import Profile from './pages/Profile/Profile'
+import NotFound from './pages/NotFound/NotFound'
 
 const App = () => {
   return (
-    <>
+    <BrowserRouter>
       <Navbar />
-      {/* <Home /> */}
-      <Pizzas />
-      {/* <Cart /> */}
-      {/* <RegisterPage /> */}
-      {/* <LoginPage /> */}
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/pizza/p001' element={<Pizza />} />
+        <Route path='/cart' element={<Cart />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='*' element={<NotFound />} />
+      </Routes>
       <Footer />
-    </>
+    </BrowserRouter>
   )
 }
 

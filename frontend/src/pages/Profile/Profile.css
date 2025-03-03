@@ -1,0 +1,16 @@
+.img-profile{
+    width: 150px;
+}
+
+.contenedor-profile{
+    border: 1px solid #000;
+    padding: 3rem;
+    margin: 8rem;
+    border-radius: 5%;
+    text-align: center;
+}
+
+.primer-contenedor-profile{
+    display: flex;
+    justify-content: center;
+}

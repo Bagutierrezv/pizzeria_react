@@ -2,7 +2,6 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 import formatearMontos from '../../helpers/montos'
-import formatearIngredientes from '../../helpers/ingredientes'
 import './CardPizza.css'
 
 const CardPizza = ({ img, name, price, ingredients }) => {

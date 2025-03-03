@@ -1,9 +1,8 @@
-import CardPizza from '../CardPizza/CardPizza'
-import Header from '../Header/Header'
+import CardPizza from '../../components/CardPizza/CardPizza'
+import Header from '../../components/Header/Header'
 import { Container, Row, Col } from 'react-bootstrap'
 import './Home.css'
 import { useEffect, useState } from 'react'
-// import { pizzas } from '../../helpers/pizzas'
 
 const Home = () => {
   const [pizzas, setPizzas] = useState([])

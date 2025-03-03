@@ -1,21 +1,19 @@
-main{
+.contenedor-pizza{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.contenedor{
     margin: 10rem 5rem;
     border: 1px solid #000;
     border-radius: 10px;
 }
-div > img{
+.img-pizza{
     width: auto;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
 }
-.descripcion{
+.descripcion-pizza{
     margin: 1rem;
 }
-h1{
+.descripcion-pizza-titulo{
     text-transform: capitalize;
 }

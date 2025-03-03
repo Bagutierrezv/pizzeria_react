@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Toaster, toast } from 'sonner'
-import './LoginPage.css'
+import './Login.css'
 
-const LoginPage = () => {
+const Login = () => {
   const [inicioSesion, setInicioSesion] = useState({
     email: '',
     clave: ''
@@ -32,11 +32,11 @@ const LoginPage = () => {
   }
 
   return (
-    <main>
-      <section className='contenedor'>
+    <main className='main-login'>
+      <section className='contenedor-login'>
         <Toaster position='top-center' expand={false} richColors />
-        <form onSubmit={handleSubmit} className='formulario'>
-          <h1 className='titulo'>Iniciar Sesión</h1>
+        <form onSubmit={handleSubmit} className='formulario-login'>
+          <h1 className='titulo-login'>Iniciar Sesión</h1>
           <div>
             <label htmlFor='email' className='form-label'>Email</label>
             <input
@@ -44,7 +44,7 @@ const LoginPage = () => {
               name='email'
               value={inicioSesion.email}
               onChange={handleOnChange}
-              className='form-control'
+              className='form-control input-login'
               placeholder='Ingresa tu email'
             />
           </div>
@@ -55,14 +55,14 @@ const LoginPage = () => {
               name='clave'
               value={inicioSesion.clave}
               onChange={handleOnChange}
-              className='form-control'
+              className='form-control input-login'
               placeholder='Ingresa tu contraseña'
             />
           </div>
-          <button type='submit' className='btn btn-info '>Iniciar Sesión</button>
+          <button type='submit' className='btn btn-info btn-login'>Iniciar Sesión</button>
         </form>
       </section>
     </main>
   )
 }
-export default LoginPage
+export default Login

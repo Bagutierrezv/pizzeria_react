@@ -29,19 +29,19 @@ const Cart = () => {
   const total = calcularTotalCompra(cart)
   return (
     <>
-      <h3>Detalles del pedido:</h3>
+      <h3 className='titulo-carrito'>Detalles del pedido:</h3>
       {
       cart.map(pizza => pizza.count > 0
         ? (
           <section key={pizza.id}>
-            <div className='cantidadPizza'>
-              <img className='imagen' src={pizza.img} alt={pizza.name} />
-              <div className='nombrePizza'>Pizza {pizza.name}</div>
-              <div className='precio'>${pizza.price * pizza.count}</div>
-              <div className='botones'>
-                <Button className='btn btn-sm btn-light btn-outline-danger m-1 sumar-restar' onClick={() => restarPizzas(pizza)}>-</Button>
+            <div className='cantidad-carrito'>
+              <img className='imagen-carrito' src={pizza.img} alt={pizza.name} />
+              <div className='nombre-pizza-carrito'>Pizza {pizza.name}</div>
+              <div className='precio-carrito'>${pizza.price * pizza.count}</div>
+              <div className='botones-carrito'>
+                <Button className='btn btn-sm btn-light btn-outline-danger m-1 sumar-restar-carrito' onClick={() => restarPizzas(pizza)}>-</Button>
                 <div>{pizza.count}</div>
-                <Button className='btn btn-sm btn-light btn-outline-primary m-1  sumar-restar' onClick={() => sumarPizzas(pizza)}>+</Button>
+                <Button className='btn btn-sm btn-light btn-outline-primary m-1  sumar-restar-carrito' onClick={() => sumarPizzas(pizza)}>+</Button>
               </div>
             </div>
           </section>
@@ -49,7 +49,7 @@ const Cart = () => {
         : ('')
       )
 }
-      <section className='pagar'>
+      <section className='pagar-carrito'>
         <h4>Total: ${total}</h4>
         <Button className='btn btn-dark btn-outline-info px-4'>Pagar</Button>
       </section>
