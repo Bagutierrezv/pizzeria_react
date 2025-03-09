@@ -1,32 +1,12 @@
-import { useState } from 'react'
-import { pizzaCart } from '../../helpers/pizzas'
+import { useContext } from 'react'
 import Button from 'react-bootstrap/Button'
 import './Cart.css'
+import { CartContext } from '../../context/CartContext'
+import formatearMontos from '../../helpers/montos'
 
 const Cart = () => {
-  const [cart, setCart] = useState(pizzaCart)
-
-  const calcularTotalCompra = (cart) => {
-    return cart.reduce((totalCompra, pizza) => {
-      return totalCompra + pizza.price * pizza.count
-    }, 0)
-  }
-
-  const sumarPizzas = (pizza) => {
-    const infoPizzaCart = [...pizzaCart]
-    const indexPizzaCart = infoPizzaCart.findIndex(e => e.id === pizza.id)
-    infoPizzaCart[indexPizzaCart].count += 1
-    setCart(infoPizzaCart)
-  }
-
-  const restarPizzas = (pizza) => {
-    const infoPizzaCart = [...pizzaCart]
-    const indexPizzaCart = infoPizzaCart.findIndex(e => e.id === pizza.id)
-    infoPizzaCart[indexPizzaCart].count -= 1
-    setCart(infoPizzaCart)
-  }
-
-  const total = calcularTotalCompra(cart)
+  const { añadirPizza, quitarPizza, total, pizzasEnCarrito } = useContext(CartContext)
+  const cart = pizzasEnCarrito()
   return (
     <>
       <h3 className='titulo-carrito'>Detalles del pedido:</h3>
@@ -37,11 +17,11 @@ const Cart = () => {
             <div className='cantidad-carrito'>
               <img className='imagen-carrito' src={pizza.img} alt={pizza.name} />
               <div className='nombre-pizza-carrito'>Pizza {pizza.name}</div>
-              <div className='precio-carrito'>${pizza.price * pizza.count}</div>
+              <div className='precio-carrito'>${formatearMontos(pizza.price * pizza.count)}</div>
               <div className='botones-carrito'>
-                <Button className='btn btn-sm btn-light btn-outline-danger m-1 sumar-restar-carrito' onClick={() => restarPizzas(pizza)}>-</Button>
+                <Button className='btn btn-sm btn-light btn-outline-danger m-1 sumar-restar-carrito' onClick={() => quitarPizza(pizza)}>-</Button>
                 <div>{pizza.count}</div>
-                <Button className='btn btn-sm btn-light btn-outline-primary m-1  sumar-restar-carrito' onClick={() => sumarPizzas(pizza)}>+</Button>
+                <Button className='btn btn-sm btn-light btn-outline-primary m-1  sumar-restar-carrito' onClick={() => añadirPizza(pizza)}>+</Button>
               </div>
             </div>
           </section>
@@ -50,7 +30,7 @@ const Cart = () => {
       )
 }
       <section className='pagar-carrito'>
-        <h4>Total: ${total}</h4>
+        <h4>Total: ${formatearMontos(total)}</h4>
         <Button className='btn btn-dark btn-outline-info px-4'>Pagar</Button>
       </section>
     </>

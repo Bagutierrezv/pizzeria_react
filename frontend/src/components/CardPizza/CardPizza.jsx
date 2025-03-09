@@ -3,8 +3,18 @@ import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 import formatearMontos from '../../helpers/montos'
 import './CardPizza.css'
+import { useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
+import { toast } from 'react-toastify'
 
-const CardPizza = ({ img, name, price, ingredients }) => {
+const CardPizza = ({ id, img, name, price, ingredients }) => {
+  const { añadirPizza } = useContext(CartContext)
+
+  const agregarPizza = ({ id, img, name, price }) => {
+    añadirPizza({ id, img, name, price })
+    toast('Se agregó la pizza!')
+  }
+
   return (
     <Card className='card'>
       <Card.Img variant='top' src={img} />
@@ -24,7 +34,7 @@ const CardPizza = ({ img, name, price, ingredients }) => {
           <Card.Title className='text-center p-2'>Precio: ${formatearMontos(price)}</Card.Title>
           <div className='d-flex justify-content-between'>
             <Button variant='outline-dark'>Ver mas 👀</Button>
-            <Button variant='dark'>Añadir 🛒</Button>
+            <Button variant='dark' onClick={() => agregarPizza({ id, img, name, price })}>Añadir 🛒</Button>
           </div>
         </ListGroup.Item>
       </ListGroup>

@@ -30,6 +30,7 @@ const Home = () => {
           {pizzas.map((pizza) =>
             <Col lg='4' md='6' key={pizza.id}>
               <CardPizza
+                id={pizza.id}
                 name={pizza.name}
                 price={pizza.price}
                 ingredients={pizza.ingredients}

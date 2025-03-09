@@ -8,21 +8,26 @@ import Register from './pages/Register/Register'
 import Cart from './pages/Cart/Cart'
 import Profile from './pages/Profile/Profile'
 import NotFound from './pages/NotFound/NotFound'
+import { CartProvider } from './context/CartContext'
+import { ToastContainer } from 'react-toastify'
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/pizza/p001' element={<Pizza />} />
-        <Route path='/cart' element={<Cart />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-      <Footer />
+      <CartProvider>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/pizza/p001' element={<Pizza />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+        <ToastContainer />
+        <Footer />
+      </CartProvider>
     </BrowserRouter>
   )
 }

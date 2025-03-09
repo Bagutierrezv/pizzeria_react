@@ -4,9 +4,11 @@ import Navbar from 'react-bootstrap/Navbar'
 import formatearMontos from '../../helpers/montos'
 import './Navigation.css'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
 
 const Navigation = () => {
-  const total = 25000
+  const { total } = useContext(CartContext)
   const token = true
   return (
     <Navbar bg='dark' data-bs-theme='dark' expand='lg'>
@@ -19,11 +21,11 @@ const Navigation = () => {
             ? <>
               <Link to='/profile' className='text-decoration-none ms-3 text-white'>🔓Profile</Link>
               <Link to='/' className='text-decoration-none ms-3 text-white'>🔒Logout</Link>
-              </>
+            </>
             : <>
               <Link to='/login' className='text-decoration-none ms-3 text-white'>🔐Login</Link>
               <Link to='/register' className='text-decoration-none ms-3 text-white'>🔐Register</Link>
-            </>
+              </>
             }
         </Nav>
         <Nav className='ms-auto'>
