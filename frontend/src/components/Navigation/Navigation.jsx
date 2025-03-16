@@ -23,21 +23,21 @@ const Navigation = () => {
       <Container>
         <Navbar.Brand href='/'>¡Pizzeria Mamma Mia!</Navbar.Brand>
         <Nav className='me-auto'>
-          <Link to='/' className='text-decoration-none ms-3 text-white'>🍕Home</Link>
+          <Link to='/' className='botonNav'>🍕Home</Link>
           {
           token
             ? <>
-              <Link to='/profile' className='text-decoration-none ms-3 text-white'>🔓Profile</Link>
-              <Button className='text-decoration-none ms-3 text-white' onClick={() => cerrarSesion()}>🔒Logout</Button>
-              </>
-            : <>
-              <Link to='/login' className='text-decoration-none ms-3 text-white'>🔐Login</Link>
-              <Link to='/register' className='text-decoration-none ms-3 text-white'>🔐Register</Link>
+              <Link to='/profile' className='botonNav'>🔓Profile</Link>
+              <Button variant='outline-light' className='botonNav' onClick={() => cerrarSesion()}>🔒Logout</Button>
             </>
+            : <>
+              <Link to='/login' className='botonNav'>🔐Login</Link>
+              <Link to='/register' className='botonNav'>🔐Register</Link>
+              </>
             }
         </Nav>
         <Nav className='ms-auto'>
-          <Link to='/cart' className='text-decoration-none ms-3 text-white'>🛒 Total: ${formatearMontos(total)}</Link>
+          <Link to='/cart' className='botonNavCart'>🛒 Total: ${formatearMontos(total)}</Link>
         </Nav>
       </Container>
     </Navbar>

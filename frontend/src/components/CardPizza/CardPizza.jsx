@@ -34,8 +34,8 @@ const CardPizza = ({ id, img, name, price, ingredients }) => {
         <ListGroup.Item>
           <Card.Title className='text-center p-2'>Precio: ${formatearMontos(price)}</Card.Title>
           <div className='d-flex justify-content-between'>
-            <Link to={`/pizza/${id}`} className='text-decoration-none verMas'>Ver mas 👀</Link>
-            <Button variant='dark' onClick={() => agregarPizza({ id, img, name, price })}>Añadir 🛒</Button>
+            <Link to={`/pizza/${id}`} className='botonCardVerMas'>Ver mas 👀</Link>
+            <Button className='botonCardAñadir' onClick={() => agregarPizza({ id, img, name, price })}>Añadir 🛒</Button>
           </div>
         </ListGroup.Item>
       </ListGroup>
