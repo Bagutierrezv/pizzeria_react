@@ -3,10 +3,14 @@ import Button from 'react-bootstrap/Button'
 import './Cart.css'
 import { CartContext } from '../../context/CartContext'
 import formatearMontos from '../../helpers/montos'
+import { UserContext } from '../../context/UserContext'
 
 const Cart = () => {
   const { añadirPizza, quitarPizza, total, pizzasEnCarrito } = useContext(CartContext)
+  const { getToken } = useContext(UserContext)
+
   const cart = pizzasEnCarrito()
+  const token = getToken()
   return (
     <>
       <h3 className='titulo-carrito'>Detalles del pedido:</h3>
@@ -31,7 +35,7 @@ const Cart = () => {
 }
       <section className='pagar-carrito'>
         <h4>Total: ${formatearMontos(total)}</h4>
-        <Button className='btn btn-dark btn-outline-info px-4'>Pagar</Button>
+        <Button className='btn btn-dark btn-outline-info px-4' disabled={!token}>Pagar</Button>
       </section>
     </>
   )

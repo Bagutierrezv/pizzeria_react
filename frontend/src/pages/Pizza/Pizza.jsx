@@ -1,11 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import './Pizza.css'
 import formatearMontos from '../../helpers/montos'
+import { useParams } from 'react-router-dom'
+import { CartContext } from '../../context/CartContext'
+import { toast } from 'react-toastify'
 
 const Pizza = () => {
+  const { id } = useParams()
   const [pizza, setPizza] = useState()
-  const url = 'http://localhost:5000/api/pizzas/p001'
+  const { añadirPizza } = useContext(CartContext)
+
+  const url = `http://localhost:5000/api/pizzas/${id}`
 
   const getPizza = async () => {
     try {
@@ -15,6 +21,11 @@ const Pizza = () => {
     } catch (error) {
       console.log(error.message)
     }
+  }
+
+  const agregarPizza = ({ id, img, name, price }) => {
+    añadirPizza({ id, img, name, price })
+    toast('Se agregó la pizza!')
   }
 
   useEffect(() => {
@@ -34,7 +45,7 @@ const Pizza = () => {
             <p>{pizza.ingredients.map((ingredient) => <li key={ingredient}>{ingredient}</li>)}</p>
             <div className='d-flex justify-content-around'>
               <h3>Precio: ${formatearMontos(pizza.price)}</h3>
-              <Button variant='dark'>Añadir 🛒</Button>
+              <Button variant='dark' onClick={() => agregarPizza(pizza)}>Añadir 🛒</Button>
             </div>
           </div>
         </main>

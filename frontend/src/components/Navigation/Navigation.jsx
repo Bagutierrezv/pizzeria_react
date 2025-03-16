@@ -6,10 +6,18 @@ import './Navigation.css'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { CartContext } from '../../context/CartContext'
+import { UserContext } from '../../context/UserContext'
+import { Button } from 'react-bootstrap'
 
 const Navigation = () => {
   const { total } = useContext(CartContext)
-  const token = true
+  const { getToken, logout } = useContext(UserContext)
+
+  const cerrarSesion = () => {
+    logout()
+  }
+
+  const token = getToken()
   return (
     <Navbar bg='dark' data-bs-theme='dark' expand='lg'>
       <Container>
@@ -20,12 +28,12 @@ const Navigation = () => {
           token
             ? <>
               <Link to='/profile' className='text-decoration-none ms-3 text-white'>🔓Profile</Link>
-              <Link to='/' className='text-decoration-none ms-3 text-white'>🔒Logout</Link>
-            </>
+              <Button className='text-decoration-none ms-3 text-white' onClick={() => cerrarSesion()}>🔒Logout</Button>
+              </>
             : <>
               <Link to='/login' className='text-decoration-none ms-3 text-white'>🔐Login</Link>
               <Link to='/register' className='text-decoration-none ms-3 text-white'>🔐Register</Link>
-              </>
+            </>
             }
         </Nav>
         <Nav className='ms-auto'>

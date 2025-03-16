@@ -6,6 +6,7 @@ import './CardPizza.css'
 import { useContext } from 'react'
 import { CartContext } from '../../context/CartContext'
 import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
 
 const CardPizza = ({ id, img, name, price, ingredients }) => {
   const { añadirPizza } = useContext(CartContext)
@@ -33,7 +34,7 @@ const CardPizza = ({ id, img, name, price, ingredients }) => {
         <ListGroup.Item>
           <Card.Title className='text-center p-2'>Precio: ${formatearMontos(price)}</Card.Title>
           <div className='d-flex justify-content-between'>
-            <Button variant='outline-dark'>Ver mas 👀</Button>
+            <Link to={`/pizza/${id}`} className='text-decoration-none verMas'>Ver mas 👀</Link>
             <Button variant='dark' onClick={() => agregarPizza({ id, img, name, price })}>Añadir 🛒</Button>
           </div>
         </ListGroup.Item>
