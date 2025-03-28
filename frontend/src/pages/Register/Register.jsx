@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Toaster, toast } from 'sonner'
 import './Register.css'
+import { UserContext } from '../../store/UserContext'
 
 const Register = () => {
   const [registro, setRegistro] = useState({
@@ -8,6 +9,8 @@ const Register = () => {
     clave: '',
     confirmarClave: ''
   })
+
+  const { register } = useContext(UserContext)
 
   const handleOnChange = (e) => {
     setRegistro({ ...registro, [e.target.name]: e.target.value })
@@ -33,13 +36,12 @@ const Register = () => {
       toast.error('Las contraseñas no coinciden')
       return
     }
-    toast.success('Registro exitoso')
+    await register(email, clave)
   }
 
   return (
     <main>
       <section className='contenedor-registro'>
-        <Toaster position='top-center' expand={false} richColors />
         <form onSubmit={handleSubmit} className='formulario-registro'>
           <h1 className='titulo-registro'>Registrate</h1>
           <div>

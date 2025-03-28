@@ -1,6 +1,7 @@
-import { useState } from 'react'
-import { Toaster, toast } from 'sonner'
+import { useContext, useState } from 'react'
+import { toast } from 'sonner'
 import './Login.css'
+import { UserContext } from '../../store/UserContext'
 
 const Login = () => {
   const [inicioSesion, setInicioSesion] = useState({
@@ -8,12 +9,17 @@ const Login = () => {
     clave: ''
   })
 
-  const handleOnChange = (e) => {
+  const { login } = useContext(UserContext)
+
+  // const navigate = useNavigate()
+
+  const handleOnChange = async (e) => {
     setInicioSesion({ ...inicioSesion, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    // navigate('/carrito')
 
     const minCaracteres = 6
 
@@ -27,14 +33,13 @@ const Login = () => {
       toast.info('La contraseña debe tener al menos 6 caracteres')
       return
     }
-
-    toast.success('Inicio de sesión exitoso')
+    await login(email, clave)
   }
 
   return (
     <main className='main-login'>
       <section className='contenedor-login'>
-        <Toaster position='top-center' expand={false} richColors />
+
         <form onSubmit={handleSubmit} className='formulario-login'>
           <h1 className='titulo-login'>Iniciar Sesión</h1>
           <div>

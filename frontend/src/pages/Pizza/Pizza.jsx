@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button'
 import './Pizza.css'
 import formatearMontos from '../../helpers/montos'
 import { useParams } from 'react-router-dom'
-import { CartContext } from '../../context/CartContext'
+import { CartContext } from '../../store/CartContext'
 import { toast } from 'react-toastify'
 import { Card } from 'react-bootstrap'
 

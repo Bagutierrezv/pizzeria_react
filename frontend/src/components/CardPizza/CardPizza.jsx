@@ -4,8 +4,8 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import formatearMontos from '../../helpers/montos'
 import './CardPizza.css'
 import { useContext } from 'react'
-import { CartContext } from '../../context/CartContext'
-import { toast } from 'react-toastify'
+import { CartContext } from '../../store/CartContext'
+import { toast } from 'sonner'
 import { Link } from 'react-router-dom'
 
 const CardPizza = ({ id, img, name, price, ingredients }) => {
@@ -13,7 +13,7 @@ const CardPizza = ({ id, img, name, price, ingredients }) => {
 
   const agregarPizza = ({ id, img, name, price }) => {
     añadirPizza({ id, img, name, price })
-    toast('Se agregó la pizza!')
+    toast.info('Se agregó la pizza!')
   }
 
   return (

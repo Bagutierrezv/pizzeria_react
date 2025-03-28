@@ -1,16 +1,45 @@
 import { useContext } from 'react'
 import Button from 'react-bootstrap/Button'
 import './Cart.css'
-import { CartContext } from '../../context/CartContext'
+import { CartContext } from '../../store/CartContext'
 import formatearMontos from '../../helpers/montos'
-import { UserContext } from '../../context/UserContext'
+import { UserContext } from '../../store/UserContext'
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
 const Cart = () => {
   const { añadirPizza, quitarPizza, total, pizzasEnCarrito } = useContext(CartContext)
-  const { getToken } = useContext(UserContext)
+  const { getUser } = useContext(UserContext)
 
   const cart = pizzasEnCarrito()
-  const token = getToken()
+  const user = getUser()
+
+  const handleCart = async (user) => {
+    try {
+      const URL = 'http://localhost:5000/api/checkouts'
+      const config = {
+        headers: {
+          Authorization: `Bearer ${user.token}`
+        }
+      }
+      const payload = cart
+      const respuesta = await axios.post(URL, payload, config)
+      Swal.fire({
+        title: 'Pago exitoso',
+        icon: 'success',
+        draggable: true
+      })
+      console.log(respuesta)
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops... Algo salió mal',
+        text: 'Intentalo nuevamente'
+      })
+      console.log(error)
+    }
+  }
+
   return (
     <>
       <h3 className='titulo-carrito'>Detalles del pedido:</h3>
@@ -35,7 +64,7 @@ const Cart = () => {
 }
       <section className='pagar-carrito'>
         <h4>Total: ${formatearMontos(total)}</h4>
-        <Button className='btn btn-dark btn-outline-info px-4' disabled={!token}>Pagar</Button>
+        <Button className='btn btn-dark btn-outline-info px-4' onClick={() => handleCart(user)} disabled={!user}>Pagar</Button>
       </section>
     </>
   )
